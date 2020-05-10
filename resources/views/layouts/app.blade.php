@@ -52,7 +52,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">Új tárgy felvétele</a>
+                            <a class="nav-link" href="{{route('add-new-subject-form')}}">Új tárgy meghírdetése</a>
                         </li>
 
                     @endif

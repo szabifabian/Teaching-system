@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function subjects(){
+        if ($this->role == "teacher") {
+            return $this->hasMany(Subject::class);
+        } else {
+            return $this->hasMany(Subject::class);
+        }
+    }
 }

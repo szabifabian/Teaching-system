@@ -2,28 +2,47 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        @guest
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Üdvözöllek az Oktatási rendszer alkalmazásomban!</div>
-
-                <div class="card-body">
-                    <h1>Jelenlegi adatok:</h1>
-                <p class="font-weight-bold">Tanárok: {{$teachers}}</p>
-                <p class="font-weight-bold">Diákok: {{ $students}}</p>
-                <p class="font-weight-bold">Feladatok: 0</p>
-                <p class="font-weight-bold">Megoldások száma: 0</p>
-                </div>
-            </div>
-        </div>
-        @else
+    @guest
+            <!--nothing-->
+     @else
+            <h1 class="text-center">Tantárgyak</h1>
             @if (Auth::user()->role == "teacher")
 
-                <h1>Tantárgyak</h1>
 
             @endif
+
+            <div class="list-group">
+                @foreach ($subjects as $subject)
+                    <div class="list-group-item list-group-item-action flex-column align-items-center">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mb-1">
+                                <a href="{{ route('subject-info', ['id' => $subject->id]) }}">{{ $subject->name }}</a>
+                            </h5>
+                            <h6 class="mb-1">
+                                Leírás: {{ $subject->about }}
+                            </h6>
+                            <h6 class="mb-1">
+                                Kód: {{ $subject->subject_code }}
+                            </h6>
+                            <h6 class="mb-1">
+                                Kreditérték: {{ $subject->credit }}
+                            </h6>
+                        </div>
+                        @if (Auth::user()->role == "teacher")
+ 
+                            <a href={{route('setPublicity', $subject->id)}}>
+                            @if ($subject->public)
+                                <button type="button" class="btn btn-outline-danger">Publikálás visszavonása</button>
+                            @else
+                                <button type="button" class="btn btn-outline-success">Publikálás</button>
+                            @endif
+                            </a>
+
+                        @endif
+                    </div>
+                @endforeach
+            </div>
         @endguest
-    </div>
+ 
 </div>
 @endsection
