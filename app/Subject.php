@@ -19,4 +19,8 @@ class Subject extends Model
     public function subjectToTeacher(){
         return $this->belongsTo(User::class, 'user_id', 'id');  //egy tárgy csak egy tanárhoz tartozik
     }
+
+    public function students(){
+        return $this->belongsToMany(User::class); //egy tárgy több diákhoz is tartozhat
+    }
 }

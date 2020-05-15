@@ -41,7 +41,11 @@ class User extends Authenticatable
         if ($this->role == "teacher") {
             return $this->hasMany(Subject::class);
         } else {
-            return $this->hasMany(Subject::class);
+            return $this->belongsToMany(Subject::class)->as('selectSubject');
         }
+    }
+
+    public function hasTheSubject($subject){         //tárgy le-fel vevésének a funkciójához kell
+        return $this->subjects->contains($subject);
     }
 }

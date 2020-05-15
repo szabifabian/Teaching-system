@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <label for="about">Leírás</label>
-            <textarea id="about" name="about" rows="4" type="number" class="form-control" placeholder="{{old('about', $data->about)}}"></textarea>
+            <textarea id="about" name="about" rows="4" type="number" class="form-control" placeholder="Írj egy új leírást"></textarea>
         </div>
 
 

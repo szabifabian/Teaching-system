@@ -55,7 +55,21 @@
                             <a class="nav-link" href="{{route('add-new-subject-form')}}">Új tárgy meghírdetése</a>
                         </li>
 
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Tárgyaim</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('subjects-list')}}">Tárgy felvétele</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('exercises')}}">Feladatok listája</a>
+                        </li>
+                    
                     @endif
+
                     <li class="nav-item"  href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <a class="nav-link" href="{{ route('logout') }}">Kijelentkezés</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">

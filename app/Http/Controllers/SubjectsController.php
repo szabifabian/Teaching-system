@@ -12,7 +12,7 @@ class SubjectsController extends Controller
     //
    public function indexAll() {
         $subjects = Subject::all()->where('public', true)->diff(Auth::user()->subjects);
-        return view('home')->with('subjects', $subjects);
+        return view('subjects-list')->with('subjects', $subjects);
     }
 
     public function indexAdd() {
@@ -36,7 +36,7 @@ class SubjectsController extends Controller
                 'user_id' => Auth::user()->id,
                 'about' => $request->input('about'),
             ]);
-        return redirect(RouteServiceProvider::HOME);
+            return redirect('home');
     }
 
 
@@ -57,8 +57,6 @@ class SubjectsController extends Controller
                 'credit' => $request->input('credit'),
             ]);
             return redirect(route('subject-info', $request->input('id')));
-
-        return redirect(RouteServiceProvider::HOME);
     }
 
     public function setPublicity($id) {
@@ -67,7 +65,7 @@ class SubjectsController extends Controller
         $subject_item->public = !$subject_item->public;
         $subject_item->save();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('home');
     }
 
     public function info($id) {
@@ -82,20 +80,20 @@ class SubjectsController extends Controller
     public function delete($id) {
         Subject::find($id)->delete();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('home');
     } 
 
     public function selectSubject($id) {
 
         Auth::user()->subjects()->attach(Subject::find($id));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('home');
     }
 
     public function unselectSubject($id) {
         Auth::user()->subjects()->detach(Subject::find($id));
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('home');
     }
 
 }
