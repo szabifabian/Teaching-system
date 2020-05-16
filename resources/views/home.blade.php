@@ -70,8 +70,8 @@
                                 <a href={{route('unselectSubject', $subject->id)}}>
                                 <button type="button" class="btn btn-outline-danger">Lead</button>
                                 </a>
-                            @endif
                         </div>
+                        @endif
                     @endforeach
                 </div>
             @endif

@@ -66,12 +66,24 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Jogviszony') }}</label>
 
-                            <div class="col-md-6">
-                                <select id="type" required class="form-control" name="type" required value="{{ old('type') }}" required autocomplete="type">
+                            <!--<div class="col-md-6">
+                                <select id="type" required class="form-control" name="type" required value="" required autocomplete="type">
                                     <option value="student">Diák/Hallgató</option>
                                     <option value="teacher">Tanár</option>
                                 </select>
+                                Tanár
+                                <input type="radio" id="type" class="form-control" name="type" value="teacher" required>
+                                Diák
+                                <input type="radio" id="type" class="form-control" name="type" value="teacher" required>
+                            -->
 
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="teacher">
+                                <label class="form-check-label" for="inlineRadio1">Tanár</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="student" checked>
+                                <label class="form-check-label" for="inlineRadio2">Diák/Hallgató</label>
                             </div>
                         </div>
 

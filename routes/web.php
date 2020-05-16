@@ -26,7 +26,7 @@ Route::get('/profile', function () {
     return view('profile');
 })->name('profile')->middleware('auth');
 
-Route::get('/subject/list', 'SubjectsController@indexAll')->name('subjects-list')->middleware('auth'); //a diák oldalra, ahol ki vannak listázva a publikus tárgyak
+Route::get('/public/subjects', 'SubjectsController@indexAll')->name('subjects-list')->middleware('auth'); //a diák oldalra, ahol ki vannak listázva a publikus tárgyak
 
 Route::get('/subject/new', 'SubjectsController@indexAdd')->name('add-new-subject-form')->middleware('auth');
 Route::post('/subject/new', 'SubjectsController@validateAddNewSubject')->name('add-new-subject-post')->middleware('auth');

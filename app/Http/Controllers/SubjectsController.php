@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Subject;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\DB;
 
 class SubjectsController extends Controller
 {
@@ -64,6 +65,10 @@ class SubjectsController extends Controller
         $subject_item = Subject::find($id);
         $subject_item->public = !$subject_item->public;
         $subject_item->save();
+
+        //ha a tanár visszavonja a publikálást, akkor akinek már fel volt véve a tárgy annak is eltűnik a felvettek között és nyílván
+        //tárgyfelvétel oldalon sem lesz jelen
+        DB::table('subject_user')->where('subject_id', $subject_item->id)->delete(); 
 
         return redirect('home');
     }
