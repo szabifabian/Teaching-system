@@ -54,6 +54,45 @@
                 </div>
             </div>
         </div>
+        @if(Auth::user()->role == "teacher")
+
+            <h1>Feladatok listája</h1>
+            <a href={{route('add-new-task-form', $data->id)}}>
+                <button type="button" class="btn btn-outline-success">Új feladat</button>
+            </a>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Név</th>
+                        <th scope="col">Pontszám</th>
+                        <th scope="col">Mettől</th>
+                        <th scope="col">Meddig</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (isset($tasks))
+                        @foreach($tasks as $task)
+                            @if($task->starting_at > date(now()))
+                                <tr class="p-3 mb-2 bg-warning text-dark">
+                            @elseif($task->starting_at < date(now()) && $task->ending_at > date(now()))
+                                <tr class="p-3 mb-2 bg-success text-white">
+                            @else 
+                                <tr class="p-3 mb-2 bg-danger text-white">
+                            @endif
+                            <th scope="row">{{ $loop->index + 1 }}.</th>
+                            <td>{{ $task->name }}</td>
+                            <td>{{ $task->score }}</td>
+                            <td>{{ $task->starting_at }}</td>
+                            <td>{{ $task->ending_at }}</td>
+                        </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+
+        @endif
 
     </div>
 @endif

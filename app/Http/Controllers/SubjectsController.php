@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Subject;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\DB;
+use App\Task;
 
 class SubjectsController extends Controller
 {
@@ -75,7 +76,9 @@ class SubjectsController extends Controller
 
     public function info($id) {
 
-        return view('subject-info', ['data' => Subject::find($id)]);
+        $tasks = Task::all()->where('subject_id', $id)->sortByDesc('ending_at'); //feladatok kilistázása az adott tárgy oldalán, rendezve
+
+        return view('subject-info', ['data' => Subject::find($id), 'tasks' => $tasks]);
     }
 
     public function edit($id) {

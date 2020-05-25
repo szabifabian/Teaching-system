@@ -60,3 +60,5 @@ Route::get('/tasks', function () {
 })->name('tasks')->middleware('auth');
 
 
+Route::get('/task/new/{id}', 'TasksController@indexAddTask')->name('add-new-task-form')->middleware('auth');
+Route::post('/task/new/{id}', 'TasksController@validateTask')->name('add-new-task-post')->middleware('auth');
