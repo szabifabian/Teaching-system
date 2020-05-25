@@ -52,7 +52,11 @@ Route::get('/subject/{id}/selectSubject', 'SubjectsController@selectSubject')->n
 Route::get('/subject/{id}/unselectSubject', 'SubjectsController@unselectSubject')->name('unselectSubject')->middleware('auth');
 
 
-//majd második felvonásra
-Route::get('/exercises', function () {
-    return view('exercises');
-})->name('exercises')->middleware('auth');
+//MÁSODIK FELVONÁSTÓL BEVITT ROUTE-OK
+
+//feladatok oldal
+Route::get('/tasks', function () {
+    return view('tasks');
+})->name('tasks')->middleware('auth');
+
+

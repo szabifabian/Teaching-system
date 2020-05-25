@@ -65,7 +65,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('exercises')}}">Feladatok listája</a>
+                            <a class="nav-link" href="{{route('tasks')}}">Feladatok listája</a>
                         </li>
                     
                     @endif

@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <label for="about">Leírás</label>
-            <textarea id="about" name="about" rows="4" type="number" class="form-control" placeholder="Írj egy új leírást"></textarea>
+            <textarea id="about" name="about" rows="4" type="text" class="form-control" autocomplete="about">{{old('about', $data->about)}}</textarea>
         </div>
 
 

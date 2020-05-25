@@ -45,7 +45,7 @@ class SubjectsController extends Controller
         
             $validated = $request->validate([
                 'name' => 'required|min:3',
-                'subject_code' => 'required|regex:^IK-([A-Z]){3}\d\d\d^|unique:App\Subject',
+                'subject_code' => 'required|regex:^IK-([A-Z]){3}\d\d\d^',
                 'credit' => 'required|numeric|min:1',
                 'about' => 'max:100'
             ]);
