@@ -82,7 +82,7 @@
                                 <tr class="p-3 mb-2 bg-danger text-white">
                             @endif
                             <th scope="row">{{ $loop->index + 1 }}.</th>
-                            <td>{{ $task->name }}</td>
+                            <td><a href="{{ route('task-info', ['id' => $task->id]) }}" class="text-white">{{ $task->name }}</a></td>
                             <td>{{ $task->score }}</td>
                             <td>{{ $task->starting_at }}</td>
                             <td>{{ $task->ending_at }}</td>
@@ -91,6 +91,31 @@
                     @endif
                 </tbody>
             </table>
+        @else 
+            <!--diákoldal-->
+            <h1>A tárgy aktív feladatai</h1>
+            @if (isset($tasks))
+            <div class="list-group">
+                @foreach($tasks as $task)
+                    @if($task->starting_at < date(now()) && $task->ending_at > date(now()))
+                    <div class="list-group-item list-group-item-action flex-column align-items-center">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-1">
+                                Név: {{ $task->name }}
+                            </h6>
+                            <h6 class="mb-1">
+                                Pontérték: {{ $task->score }}
+                            </h6>
+                            <h6 class="mb-1">
+                                Határidő: {{ $task->starting_at }}-tól {{ $task->ending_at }}-ig
+                            </h6>
+                        </div>
+                    </div>
+                    
+                    @endif
+                @endforeach
+            </div>
+            @endif
 
         @endif
 

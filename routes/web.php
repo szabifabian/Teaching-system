@@ -55,10 +55,13 @@ Route::get('/subject/{id}/unselectSubject', 'SubjectsController@unselectSubject'
 //MÁSODIK FELVONÁSTÓL BEVITT ROUTE-OK
 
 //feladatok oldal
-Route::get('/tasks', function () {
-    return view('tasks');
-})->name('tasks')->middleware('auth');
-
+Route::get('/active/tasks', 'TasksController@allActiveTasks')->name('tasks')->middleware('auth');
 
 Route::get('/task/new/{id}', 'TasksController@indexAddTask')->name('add-new-task-form')->middleware('auth');
 Route::post('/task/new/{id}', 'TasksController@validateTask')->name('add-new-task-post')->middleware('auth');
+
+
+Route::get('/task/{id}', 'TasksController@taskInfo')->name('task-info')->middleware('auth');
+
+Route::get('/task/edit/{id}', 'TasksController@editTask')->name('edit-task')->middleware('auth');
+Route::post('/task/edit', 'TasksController@validateEditTask')->name('update-task-post')->middleware('auth');

@@ -23,4 +23,5 @@ class Subject extends Model
     public function students(){
         return $this->belongsToMany(User::class); //egy tárgy több diákhoz is tartozhat
     }
+
 }
