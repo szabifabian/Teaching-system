@@ -65,3 +65,9 @@ Route::get('/task/{id}', 'TasksController@taskInfo')->name('task-info')->middlew
 
 Route::get('/task/edit/{id}', 'TasksController@editTask')->name('edit-task')->middleware('auth');
 Route::post('/task/edit', 'TasksController@validateEditTask')->name('update-task-post')->middleware('auth');
+
+
+Route::post('/task/answer/{id}', 'SolutionsController@validateSolution')->name('add-solution-post')->middleware('auth');
+
+Route::get('/task/answer/grade/{id}', 'SolutionsController@editSolution')->name('add-solution-grade')->middleware('auth');
+Route::get('/task/answer/grade', 'SolutionsController@validateEditSolution')->name('add-solution-grade-post')->middleware('auth');

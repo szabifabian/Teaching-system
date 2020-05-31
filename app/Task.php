@@ -15,5 +15,7 @@ class Task extends Model
         return $this->belongsTo(Subject::class, 'subject_id', 'id'); //egy feladat csak egy tárgyhoz tartozik
     }
 
-    //kell majd egy Answer modell....egy feladathoz több megoldás is tartozik
+    public function solutions(){
+        return $this->hasMany(Solution::class); //egy feladathoz több megoldás is tartozik
+    }
 }

@@ -24,4 +24,8 @@ class Subject extends Model
         return $this->belongsToMany(User::class); //egy tárgy több diákhoz is tartozhat
     }
 
+    public function tasks(){
+        return $this->hasMany(Task::class); //egy tárgyhoz több feladat is tartozik
+    }
+
 }

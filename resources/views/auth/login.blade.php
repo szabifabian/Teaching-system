@@ -14,7 +14,7 @@
             <p class="font-weight-bold">Tanárok: {{DB::table('users')->where('role', 'teacher')->count()}}</p>
             <p class="font-weight-bold">Diákok: {{ DB::table('users')->where('role', 'student')->count()}}</p>
             <p class="font-weight-bold">Feladatok száma: {{ DB::table('tasks')->count()}}</p>
-            <p class="font-weight-bold">Megoldások száma: 0</p>
+            <p class="font-weight-bold">Megoldások száma: {{ DB::table('solutions')->count()}}</p>
             </div>
         </div>
     </div>

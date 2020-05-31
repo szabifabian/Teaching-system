@@ -99,9 +99,9 @@
                 @foreach($tasks as $task)
                     @if($task->starting_at < date(now()) && $task->ending_at > date(now()))
                     <div class="list-group-item list-group-item-action flex-column align-items-center">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between">     
                             <h6 class="mb-1">
-                                Név: {{ $task->name }}
+                                Név: <a href="{{ route('task-info', ['id' => $task->id]) }}">{{ $task->name }}</a>
                             </h6>
                             <h6 class="mb-1">
                                 Pontérték: {{ $task->score }}
@@ -109,6 +109,11 @@
                             <h6 class="mb-1">
                                 Határidő: {{ $task->starting_at }}-tól {{ $task->ending_at }}-ig
                             </h6>
+                                @if(DB::table('solutions')->where('task_id', $task->id)->where('user_id', Auth::user()->id)->count() > 0)
+                                    <p class="text-green">Beadva</p>
+                                @else
+                                    <p class="text-red">Nincs beadva</p>
+                                @endif
                         </div>
                     </div>
                     

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Subject;
+use App\Solution;
 use App\Task;
 use Illuminate\Support\Facades\DB;
 
@@ -65,14 +66,16 @@ class TasksController extends Controller
 
     public function taskInfo($id){
 
-        return view('task-info', ['data' => Task::find($id)]);
+        $answers_to_task = Solution::all()->where('task_id', $id);
+
+        return view('task-info', ['data' => Task::find($id), 'answers_to_task' => $answers_to_task]);
     }
 
     public function allActiveTasks(){
 
         $active_tasks = Task::all()->where(
             'starting_at', '<', Date(now())
-            )->where('ending_at', '>', Date(now()));
+            )->where('ending_at', '>', Date(now()))->sortBy('subject_id');
 
         return view('tasks', ['active_tasks' => $active_tasks]);
     }
