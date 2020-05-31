@@ -1,7 +1,7 @@
 Név: Fábián Szabolcs<br>
 Neptun-kód: G6K9Q9<br>
 Szerveroldali webrpogramozás, Oktatási rendszer<br>
-2020.05.16.<br>
+2020.05.31.<br>
 Ezt a megoldást Fábián Szabolcs, G6K9Q9 küldte be és készítette a Szerveroldali webrpogramozás kurzus Oktatási rendszer feladatához.
 Kijelentem, hogy ez a megoldás a saját munkám.
 Nem másoltam vagy használtam harmadik féltől származó megoldásokat.

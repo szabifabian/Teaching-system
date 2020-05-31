@@ -14,5 +14,6 @@ class LmsSeeder extends Seeder
         //
         $this->call(UserSeeder::class);
         $this->call(SubjectSeeder::class);
+        $this->call(TaskSeeder::class);
     }
 }
